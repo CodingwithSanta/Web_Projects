@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        body{
+            margin: 0;
+            overflow: hidden;
+            background-color: #030303;
+
+        }
+        .star-effect{
+            position: absolute;
+            background: linear-gradient(80deg,#e74c3c,#3498db,#2ecc71,#06f1d2);
+            border-radius: 50% ;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            animation: scaleUp 0.5s linear;
+
+        }
+        @keyframes scaleUp{
+            0% {
+                transform: scale(0);
+                opacity: 1;
+
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function createStar(x, y) {
+                const star = document.createElement("div");
+                star.className="star-effect";
+                star.style.left = x + "px";
+                star.style.top = y + "px";
+                document.body.appendChild(star);
+                setTimeout(() => {
+                    document.body.removeChild(star);
+
+                }, 500);
+            }
+            document.addEventListener("mousemove", function (event){
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+
+                const deltaX = mouseX;
+                const deltaY = mouseY;
+                createStar(deltaX, deltaY);
+
+
+
+            });
+        });
+        
+    </script>
+</body>
+</html>

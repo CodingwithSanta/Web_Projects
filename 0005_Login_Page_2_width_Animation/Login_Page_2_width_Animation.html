@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation_login_page</title>
+    <link rel="stylesheet" href="Animation.html">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(Animation.html);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            font-family: 'Arial',sans-serif;
+            color: white;
+
+        }
+        #login-form{
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(3px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px  rgba(0,0,0,0.5);
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+        label{
+            display: block;
+            margin-bottom: 8px;
+            position: relative;
+            left: 103px;
+        }
+        input{
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border-radius: 30px;
+            border: none;
+
+        }
+        button{
+            background-color: #e59009;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgb(0, 0, 0);
+
+        }
+
+    </style>
+       <style>
+        body{
+            margin: 0;
+            overflow: hidden;
+            background-color: #030303;
+
+        }
+        .star-effect{
+            position: absolute;
+            background: linear-gradient(80deg,#e74c3c,#3498db,#2ecc71,#06f1d2);
+            border-radius: 50% ;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            animation: scaleUp 0.5s linear;
+
+        }
+        @keyframes scaleUp{
+            0% {
+                transform: scale(0);
+                opacity: 1;
+
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+
+            }
+        }
+    </style>
+
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function createStar(x, y) {
+                const star = document.createElement("div");
+                star.className="star-effect";
+                star.style.left = x + "px";
+                star.style.top = y + "px";
+                document.body.appendChild(star);
+                setTimeout(() => {
+                    document.body.removeChild(star);
+
+                }, 500);
+            }
+            document.addEventListener("mousemove", function (event){
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+
+                const deltaX = mouseX;
+                const deltaY = mouseY;
+                createStar(deltaX, deltaY);
+
+
+
+            });
+        });
+        
+    </script>
+
+
+</head>
+<body>
+    <div id="login-form">
+        <h1>Login</h1>
+        <form onsubmit="login(event)">
+             <label for="username">Username </label>
+             <input type="text" id="username" name="username" required>
+
+              <label for="Passward">Passward</label>
+              <input type="password" id="Passward" name="Passward" required>
+              <button type="submit">Login</button>
+        <form>
+    </div>
+    
+</body>
+</html>
