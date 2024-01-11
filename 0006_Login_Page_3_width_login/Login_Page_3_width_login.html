@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login-form</title>
+    <style>
+    body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(ad1.jpg) center/cover no-repeat;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            font-family: 'Arial',sans-serif;
+            color: white;
+
+        }
+        #login-form {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(3px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+        #login-form label{
+            display: block;
+            margin-bottom: 8px;
+            position: relative;
+            left: -103px;
+        }
+        #login-form input{
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border-radius: 30px;
+            border: none; 
+
+        }
+        #login-form button{
+            background-color: #e59009;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        #login-form button:hover {
+            background-color:gray;
+
+        }
+        .password-container{
+            position: relative;
+        }
+        .password-toggle{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+        }
+        </style>
+        <script>
+            function togglePassword() {
+                var  passwordInput = document.getElementById("password");
+                var  passwordToggle = document.getElementById("password-toggle");
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    passwordToggle.innerHTML = "👀";
+
+                } else {
+                    passwordInput.type ="password";
+                    passwordToggle.innerHTML = "🔓";
+                }
+
+            }
+            function login(event) {
+                event.preventDefault();
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                if(username === "Santa" && password === "raja"){
+                    window.location.href = "home.html";
+
+                } else{
+                    alert("Invalid Username or Password. Please Try Again")
+                    document.getElementById("username").value = "";
+                    document.getElementById("Password").value = "";
+                }
+            }
+        </script>
+</head>
+<body>
+    <div id="login-form">
+        <h1>Login</h1>
+        <form onsubmit="login(event)">
+             <label for="username">Username: </label>
+             <input type="text" id="username" name="username" required>
+             <div class="password-container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span id="password-toggle" class="password-toggle" onclick="togglePassword()">🔓</span>
+             </div>
+             <button type="submit">Login</button>
+        <form>
+    </div>
+</body>
+</html>
